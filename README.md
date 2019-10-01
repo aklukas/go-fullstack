@@ -1,4 +1,4 @@
-# Dockerized Go Server
+# Dockerized Go API
 Full CRUD GoLang server running in a docker container connected to a postgres database.
 
 # Running the Server
