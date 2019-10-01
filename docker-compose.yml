@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  server:
+    build: ./server
+    volumes:
+      - ./server:/app/
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+    links:
+      - postgres:postgres
+
+  postgres:
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_DB: gong_users
+      POSTGRES_USER: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+volumes:
+  postgres:
