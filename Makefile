@@ -1,6 +1,3 @@
-start: ## Builds and starts the project in a docker container
-	@docker-compose up --remove-orphans --build
-
 help: ## Help documentation
 	@echo "Available targets:"
 	@grep -E '^[a-zA-Z_0-9-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
@@ -10,3 +7,21 @@ build-local: ## Builds a local executable of the project via "go build"
 
 start-local: build-local ## Builds and starts a local version of the program
 	@(cd server && ./main)
+
+build-dev-images: ## Builds the docker development images based on docker-compose.yml
+	@(docker-compose build)
+
+deploy-namespace: ## Creates Kubernetes workspace
+	@(kubectl apply -f ./kubernetes/namespace.yaml && kubectl config set-context --current --namespace=chris-devops-example)
+
+deploy-data: ## Creates the k8s database deployment and service
+	@(kubectl apply -f ./kubernetes/data.yaml)
+
+deploy-dev-server: ## Creates the k8s dev server deployment and service
+	@(kubectl apply -f ./kubernetes/server.yaml)
+
+deploy-dev: build-dev-images deploy-namespace deploy-data deploy-dev-server
+## Creates development-specific deployments and services
+
+destroy-all-k8s: ## Deletes the local Kubernetes architecture
+	@(kubectl delete -f ./kubernetes)

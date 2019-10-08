@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: server
+  namespace: chris-devops-example
+spec:
+  type: LoadBalancer
+  selector:
+    app: server
+  ports:
+    - protocol: TCP
+      targetPort: api
+      port: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server
+  namespace: chris-devops-example
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: server
+  template:
+    metadata:
+      labels:
+        app: server
+        version: v1
+    spec:
+      containers:
+        - name: server
+          image: dockerized-go-api_server:latest
+          imagePullPolicy: Never
+          volumeMounts:
+            - mountPath: /app
+              name: hot-reload-server
+          ports:
+            - name: api
+              containerPort: 8080
+      volumes:
+        - name: hot-reload-server
+          hostPath:
+            path: /Users/aklukas/projects/dockerized-go-api/server
+
