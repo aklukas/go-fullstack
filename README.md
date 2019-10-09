@@ -12,5 +12,5 @@ The docker portion is contained in `docker-compose.yml` and `server/Dockerfile`.
 build-local                    Builds a local executable of the project via "go build"
 help                           Help documentation
 start-local                    Builds and starts a local version of the program
-start                          Builds and starts the project in a docker container
+deploy-dev                     Will deploy the server and the db with Kubernetes the running server will then be available at http://localhost:8080/api/v1/users
 ```
