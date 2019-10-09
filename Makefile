@@ -9,7 +9,7 @@ start-local: build-local ## Builds and starts a local version of the program
 	@(cd server && ./main)
 
 build-dev-images: ## Builds the docker development images based on docker-compose.yml
-	@(docker-compose build)
+	@(cd server && docker build .)
 
 deploy-namespace: ## Creates Kubernetes workspace
 	@(kubectl apply -f ./kubernetes/namespace.yaml && kubectl config set-context --current --namespace=chris-devops-example)
