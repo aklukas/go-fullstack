@@ -2,9 +2,9 @@
 Full CRUD GoLang server running in a docker container connected to a postgres database.
 
 # Running the Server
-To start the server, run `make start`. 
-This will build the Go files and run the resulting executable in a docker container. 
+To start the server in Kubernetes locally, run `make deploy-dev`. 
 The docker portion is contained in `docker-compose.yml` and `server/Dockerfile`.
+All of the Kubernetes files are located in `kubernetes/`
 
 ## Available Make Commands
 
