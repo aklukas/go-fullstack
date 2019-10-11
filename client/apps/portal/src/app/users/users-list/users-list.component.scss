@@ -1,0 +1,22 @@
+.user-list-component {
+  .list-item {
+    margin: 0px 10px 10px 10px;
+  }
+
+  mat-card {
+    padding: 10px 10px 0px 10px;
+  }
+
+  mat-card-title {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  span {
+    width: 75%;
+  }
+
+  mat-icon {
+    padding-bottom: 10px;
+  }
+}

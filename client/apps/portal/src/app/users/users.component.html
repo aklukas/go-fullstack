@@ -1,0 +1,17 @@
+<div class="main">
+  <div class="details">
+    <client-users-detail
+      [group]="form"
+      [user]="user"
+      (saved)="save($event)"
+      (cancelled)="reset($event)"
+    ></client-users-detail>
+  </div>
+  <div class="list">
+    <client-users-list
+      [users]="users$ | async"
+      (selected)="select($event)"
+      (deleted)="deleteUser($event)"
+    ></client-users-list>
+  </div>
+</div>

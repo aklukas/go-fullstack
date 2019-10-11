@@ -1,0 +1,16 @@
+mat-toolbar {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  height: 55px;
+  z-index: 99;
+
+  .title {
+    margin-left: 25px;
+  }
+}
+
+mat-sidenav-container {
+  background-color: lightgray;
+  height: 100%;
+}

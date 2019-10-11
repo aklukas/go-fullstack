@@ -1,0 +1,8 @@
+<div class="user-list-component">
+  <mat-card class="list-item" *ngFor="let user of users">
+    <mat-card-title class="pointer">
+      <span (click)="selectUser(user)">{{user.FirstName}} {{user.LastName}}</span>
+      <button mat-icon-button (click)="deleteUser(user.Id)"><mat-icon>delete</mat-icon></button>
+    </mat-card-title>
+  </mat-card>
+</div>

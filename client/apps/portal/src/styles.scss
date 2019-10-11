@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+}
+
+mat-card {
+  border-radius: 0px !important;
+  box-shadow: none !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
