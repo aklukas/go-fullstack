@@ -9,10 +9,13 @@ start-local: build-local ## Builds and starts a local version of the program
 	@(cd server && go run main.go)
 
 build-dev-images: ## Builds the docker development images based on docker-compose.yml
-	@(cd server && docker-compose build)
+	@(docker-compose build)
 
 deploy-namespace: ## Creates Kubernetes workspace
 	@(kubectl apply -f ./kubernetes/namespace.yaml && kubectl config set-context --current --namespace=chris-devops-example)
+
+deploy-dev-client: ## Creates the k8s dev client deployment and service
+	@(kubectl apply -f ./kubernetes/client.yaml)
 
 deploy-data: ## Creates the k8s database deployment and service
 	@(kubectl apply -f ./kubernetes/data.yaml)
@@ -20,8 +23,9 @@ deploy-data: ## Creates the k8s database deployment and service
 deploy-dev-server: ## Creates the k8s dev server deployment and service
 	@(kubectl apply -f ./kubernetes/server.yaml)
 
-deploy-dev: build-dev-images deploy-namespace deploy-data deploy-dev-server
+deploy-dev: build-dev-images deploy-namespace deploy-data deploy-dev-server deploy-dev-client
 	@(echo "Server running on http://localhost:8080/api/v1/users")
+	@(echo "Client running on http://localhost:4200/users")
 ## Creates development-specific deployments and services
 
 destroy-all-k8s: ## Deletes the local Kubernetes architecture
