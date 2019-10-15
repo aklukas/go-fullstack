@@ -9,7 +9,7 @@ spec:
     app: client
   ports:
     - protocol: TCP
-      targetPort: client
+      targetPort: frontend
       port: 4200
 ---
 apiVersion: apps/v1
@@ -36,9 +36,11 @@ spec:
             - mountPath: /app
               name: hot-reload
           ports:
-            - name: client
+            - name: frontend
               containerPort: 4200
       volumes:
         - name: hot-reload
           hostPath:
+            # Path is essentially $(cwd)/client
             path: /Users/aklukas/projects/dockerized-go-api/client
+            type: Directory
