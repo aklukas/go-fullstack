@@ -1,13 +1,14 @@
 pipeline {
-  agent {
-    docker {
-          image "node:6.3"
-        }
-      }
+  agent any
   stages {
-    stage('Build Images') {
+    stage('Install') {
       steps {
-        sh "bash start.sh"
+        sh "cd client && yarn"
+      }
+    }
+    stage('Lint') {
+      steps {
+        sh "cd client && yarn lint"
       }
     }
   }
