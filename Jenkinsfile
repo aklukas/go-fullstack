@@ -11,5 +11,10 @@ pipeline {
         sh "cd client && yarn lint"
       }
     }
+    stage('Unit Test') {
+      steps {
+        sh "cd client && yarn test"
+      }
+    }
   }
 }

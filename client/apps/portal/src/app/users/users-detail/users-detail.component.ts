@@ -26,6 +26,6 @@ export class UsersDetailComponent {
   }
 
   determineIfUpdate() {
-    return !!this.group.value.Id;
+    return this.group ? !!this.group.value.Id : this.group;
   }
 }
