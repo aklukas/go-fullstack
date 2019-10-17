@@ -6,6 +6,7 @@
     "ng": "ng",
     "nx": "nx",
     "start": "ng serve --host=0.0.0.0",
+    "deploy": "aws s3 cp ./dist/apps/portal s3://ctake-users --recursive --acl public-read",
     "build": "ng build",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",

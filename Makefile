@@ -8,6 +8,9 @@ build-local: ## Builds a local executable of the project via "go build"
 start-local: build-local ## Builds and starts a local version of the program
 	@(cd server && go run main.go)
 
+deploy-frontend:
+	@(cd client && yarn build && yarn deploy)
+
 build-dev-images: ## Builds the docker development images based on docker-compose.yml
 	@(docker-compose build)
 
