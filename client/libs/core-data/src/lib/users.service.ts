@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './user';
 
-const URL = "http://localhost:8080/api/v1/users"
+// const URL = "http://localhost:8080/api/v1/users"
+const URL = "http://a41663716f44811e9acbd0e636e4179c-1347900396.us-east-1.elb.amazonaws.com:8080/api/v1/users"
 
 @Injectable({
   providedIn: 'root'

@@ -22,7 +22,7 @@ export class UsersDetailComponent {
   }
 
   cancel() {
-    this.cancelled.emit();
+    this.group.reset();
   }
 
   determineIfUpdate() {

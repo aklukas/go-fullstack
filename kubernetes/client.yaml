@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: dockerized-go-api_client:latest
+          image: catake92/client:latest
           imagePullPolicy: Never
           volumeMounts:
             - mountPath: /app

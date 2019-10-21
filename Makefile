@@ -31,5 +31,11 @@ deploy-dev: build-dev-images deploy-namespace deploy-data deploy-dev-server depl
 	@(echo "Client running on http://localhost:4200/users")
 ## Creates development-specific deployments and services
 
+deploy-server-release: ## Creates the k8s deployment and service for the release version of the server
+	@(kubectl apply -f ./kubernetes/server-release.yaml)
+
+build-client-release-image: ## Builds the release-ready docker image for the client
+	@(. wait-for-endpoint.sh && docker-compose build --force-rm --build-arg ENDPOINT=http://$$ENDPOINT client-release)
+
 destroy-all-k8s: ## Deletes the local Kubernetes architecture
 	@(kubectl delete -f ./kubernetes)

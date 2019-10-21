@@ -3,6 +3,20 @@ version: '3.7'
 services:
   client:
     build: ./client
+    image: catake92/client:latest
+
+  client-release:
+    build:
+      context: './client'
+      dockerfile: Dockerfile-release
+    image: catake92/client-release:latest
 
   server:
     build: ./server
+    image: catake92/server:latest
+
+  server-release:
+    build:
+      context: ./server
+      dockerfile: Dockerfile-release
+    image: catake92/server-release:latest
